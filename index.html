@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Raihan Sherzad | God Mode Portfolio</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700&display=swap" rel="stylesheet">
+<script src="https://kit.fontawesome.com/4b8b2b5f7f.js" crossorigin="anonymous"></script>
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:Poppins;background:#0f172a;color:#fff;overflow-x:hidden;cursor:none;}
+a{text-decoration:none;color:inherit;}
+section{padding:60px 50px;opacity:0;transform:translateY(40px);transition:.8s ease;}
+section.show{opacity:1;transform:translateY(0);}
+h2{margin-bottom:30px;text-align:center;}
+nav{display:flex;justify-content:space-between;align-items:center;padding:20px 50px;background:#020617;position:sticky;top:0;z-index:50;}
+nav a{margin:0 10px;transition:.3s}
+nav a:hover{color:#22c55e}
+nav .btn{background:#facc15;color:#000;padding:12px 25px;border-radius:8px;font-weight:600;transition:.3s}
+nav .btn:hover{transform:scale(1.1)}
+.hero{display:flex;align-items:center;justify-content:space-between;padding:100px 50px;position:relative}
+.hero-text h1{font-size:55px;line-height:1.2;}
+.hero-text span{color:#22c55e}
+.hero-text p{max-width:450px;margin:20px 0;color:#cbd5e1;}
+.hero-text .btn{display:inline-block}
+.hero-img{position:relative;width:380px;height:380px}
+.circle{width:100%;height:100%;border-radius:50%;background:linear-gradient(135deg,#22c55e,#0ea5e9);display:flex;align-items:center;justify-content:center;animation:rotate 8s linear infinite;box-shadow:0 0 20px #22c55e33;}
+.circle img{width:85%;border-radius:50%;animation:float 3s ease-in-out infinite;transition:.5s transform;}
+.circle:hover img{transform:scale(1.05) rotate(5deg);}
+.badge{position:absolute;background:#1e293b;padding:8px 12px;border-radius:20px;font-size:12px;animation:float 4s infinite;transition:.3s;cursor:pointer;}
+.badge:hover{transform:scale(1.2);color:#22c55e;}
+.badge1{top:10%;left:-20px}
+.badge2{top:10%;right:-20px}
+.badge3{bottom:10%;left:-20px}
+.badge4{bottom:10%;right:-20px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px}
+.card{background:#1e293b;padding:20px;border-radius:10px;transition:.5s;overflow:hidden;position:relative;cursor:pointer;}
+.card:hover{transform:translateY(-10px) scale(1.05);box-shadow:0 0 20px #22c55e77;}
+.card img{width:100%;border-radius:10px;transition:.5s;}
+.card:hover img{transform:scale(1.1);}
+.video-card video{width:100%;border-radius:10px;display:block;}
+.card-particles{position:absolute;top:0;left:0;width:100%;height:100%;pointer-events:none;overflow:hidden;border-radius:10px;}
+.particle{position:absolute;width:4px;height:4px;border-radius:50%;background:#22c55e;opacity:0;transition:opacity .3s;}
+.skill-bar{background:#1e293b;border-radius:8px;height:15px;margin-top:10px;overflow:hidden;}
+.skill-fill{background:#22c55e;width:0;height:100%;border-radius:8px;transition:width 2s;}
+.counter{color:#22c55e;font-size:2rem;font-weight:700;}
+footer{text-align:center;padding:20px;background:#020617;color:#94a3b8;position:relative;z-index:10}
+canvas{position:fixed;top:0;left:0;z-index:-1}
+.cursor{width:20px;height:20px;border:2px solid #22c55e;border-radius:50%;position:fixed;pointer-events:none;transform:translate(-50%, -50%);transition:transform .1s,background .2s;z-index:100;}
+.cursor.active{transform:translate(-50%, -50%) scale(2);background:#22c55e33;}
+@keyframes rotate{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-15px)}}
+</style>
+</head>
+<body>
+
+<canvas id="bg"></canvas>
+<div class="cursor" id="cursor"></div>
+
+<nav>
+<div><b>RAIHAN</b></div>
+<div>
+<a href="#services">Services</a>
+<a href="#portfolio">Portfolio</a>
+<a href="#skills">Skills</a>
+<a href="#counters">Achievements</a>
+<a href="#contact">Contact</a>
+</div>
+<a class="btn" href="#contact">Contact Me</a>
+</nav>
+
+<div class="hero">
+<div class="hero-text">
+<p>Introducing</p>
+<h1>Hello I'm <br><span>Raihan Sherzad</span></h1>
+<p>Graphic Designer & Video Editor creating modern, dynamic visuals.</p>
+<a href="#contact" class="btn">Contact Me</a>
+</div>
+
+<div class="hero-img">
+<div class="circle">
+<img src="https://via.placeholder.com/300">
+</div>
+<div class="badge badge1">Ps</div>
+<div class="badge badge2">Ai</div>
+<div class="badge badge3">Id</div>
+<div class="badge badge4">Xd</div>
+</div>
+</div>
+
+<section id="services">
+<h2>My Services</h2>
+<div class="grid">
+<div class="card">Logo Design</div>
+<div class="card">Social Media Design</div>
+<div class="card">Video Editing</div>
+</div>
+</section>
+
+<section id="portfolio">
+<h2>Portfolio</h2>
+<div class="grid">
+<div class="card video-card">
+<video src="https://www.w3schools.com/html/mov_bbb.mp4" muted loop preload="metadata"></video>
+<img src="https://via.placeholder.com/300" class="thumb">
+</div>
+<div class="card"><img src="https://via.placeholder.com/300"></div>
+<div class="card video-card">
+<video src="https://www.w3schools.com/html/movie.mp4" muted loop preload="metadata"></video>
+<img src="https://via.placeholder.com/300" class="thumb">
+</div>
+</div>
+</section>
+
+<section id="skills">
+<h2>My Skills</h2>
+<div class="grid">
+<div class="card">
+<h3>Photoshop</h3>
+<div class="skill-bar"><div class="skill-fill" data-percent="90%"></div></div>
+</div>
+<div class="card">
+<h3>Illustrator</h3>
+<div class="skill-bar"><div class="skill-fill" data-percent="85%"></div></div>
+</div>
+<div class="card">
+<h3>Video Editing</h3>
+<div class="skill-bar"><div class="skill-fill" data-percent="95%"></div></div>
+</div>
+</div>
+</section>
+
+<section id="counters">
+<h2>Achievements</h2>
+<div class="grid">
+<div class="card"><h3><span class="counter" data-target="150">0</span>+</h3>Projects Completed</div>
+<div class="card"><h3><span class="counter" data-target="100">0</span>+</h3>Happy Clients</div>
+<div class="card"><h3><span class="counter" data-target="200">0</span>+</h3>Videos Edited</div>
+</div>
+</section>
+
+<section id="contact">
+<h2>Contact Me</h2>
+<div class="grid">
+<div class="card">Email: example@email.com</div>
+<div class="card">Phone: +93 700 000 000</div>
+<div class="card">Social: @raihansherzad</div>
+</div>
+</section>
+
+<footer>
+© 2026 Raihan Sherzad | God Mode Portfolio
+</footer>
+
+<script>
+// ---------- Scroll Animation ----------
+window.addEventListener('scroll',()=>{
+document.querySelectorAll('section').forEach((s,i)=>{
+if(s.getBoundingClientRect().top<window.innerHeight-100){setTimeout(()=>s.classList.add('show'),i*200)}})});
+
+// ---------- Particles ----------
+const c=document.getElementById('bg'),ctx=c.getContext('2d');c.width=innerWidth;c.height=innerHeight;
+let p=[];for(let i=0;i<120;i++){p.push({x:Math.random()*c.width,y:Math.random()*c.height,r:Math.random()*2+1,dx:(Math.random()-0.5)*0.5,dy:(Math.random()-0.5)*0.5})}
+function draw(){ctx.clearRect(0,0,c.width,c.height);p.forEach(a=>{a.x+=a.dx;a.y+=a.dy;if(a.x>c.width)a.x=0;if(a.x<0)a.x=c.width;if(a.y>c.height)a.y=0;if(a.y<0)a.y=c.height;ctx.beginPath();ctx.arc(a.x,a.y,a.r,0,Math.PI*2);ctx.fillStyle='#22c55e';ctx.fill()});requestAnimationFrame(draw)}
+draw();
+
+// ---------- Custom Cursor ----------
+const cursor=document.getElementById('cursor');
+document.addEventListener('mousemove',e=>{cursor.style.left=e.clientX+'px';cursor.style.top=e.clientY+'px';})
+document.querySelectorAll('a,.card,.badge').forEach(el=>{el.addEventListener('mouseenter',()=>cursor.classList.add('active'));el.addEventListener('mouseleave',()=>cursor.classList.remove('active'));});
+
+// ---------- Video Hover ----------
+document.querySelectorAll('.video-card').forEach(card=>{
+const video = card.querySelector('video');
+card.addEventListener('mouseenter',()=>{video.play();});
+card.addEventListener('mouseleave',()=>{video.pause(); video.currentTime=0;});
+});
+
+// ---------- Animate Skills ----------
+function animateSkills(){
+  document.querySelectorAll('.skill-fill').forEach(fill=>{
+    fill.style.width = fill.dataset.percent;
+  });
+}
+
+// ---------- Animated Counters ----------
+function animateCounters(){
+  document.querySelectorAll('.counter').forEach(counter=>{
+    const target = +counter.dataset.target;
+    let count = 0;
+    const step = Math.ceil(target/100);
+    const interval = setInterval(()=>{
+      count += step;
+      if(count>=target){count=target;clearInterval(interval);}
+      counter.innerText = count;
+    },20);
+  });
+}
+
+// ---------- Card Hover Particles ----------
+document.querySelectorAll('.card').forEach(card=>{
+  const container = document.createElement('div');
+  container.classList.add('card-particles');
+  card.appendChild(container);
+
+  card.addEventListener('mouseenter',()=>{
+    for(let i=0;i<20;i++){
+      const particle = document.createElement('div');
+      particle.classList.add('particle');
+      particle.style.left = Math.random()*100 + '%';
+      particle.style.top = Math.random()*100 + '%';
+      container.appendChild(particle);
+
+      const xMove = (Math.random()-0.5)*50;
+      const yMove = (Math.random()-0.5)*50;
+      particle.style.transition = 'transform 0.8s ease, opacity 0.8s ease';
+      particle.style.transform = `translate(${xMove}px, ${yMove}px)`;
+      particle.style.opacity = 1;
+
+      setTimeout(()=>{particle.remove();},800);
+    }
+  });
+});
+
+// ---------- Trigger animations on load ----------
+window.addEventListener('load', ()=>{
+  animateSkills();
+  animateCounters();
+  document.querySelectorAll('section').forEach(s=>s.classList.add('show'));
+});
+</script>
+
+</body>
+</html>
