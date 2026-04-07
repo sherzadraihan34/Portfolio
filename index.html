@@ -1,236 +1,391 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Raihan Sherzad | God Mode Portfolio</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Raihan Sherzad | Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@400;600;700&display=swap" rel="stylesheet">
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700&display=swap" rel="stylesheet">
-<script src="https://kit.fontawesome.com/4b8b2b5f7f.js" crossorigin="anonymous"></script>
 
-<style>
-*{margin:0;padding:0;box-sizing:border-box;}
-body{font-family:Poppins;background:#0f172a;color:#fff;overflow-x:hidden;cursor:none;}
-a{text-decoration:none;color:inherit;}
-section{padding:60px 50px;opacity:0;transform:translateY(40px);transition:.8s ease;}
-section.show{opacity:1;transform:translateY(0);}
-h2{margin-bottom:30px;text-align:center;}
-nav{display:flex;justify-content:space-between;align-items:center;padding:20px 50px;background:#020617;position:sticky;top:0;z-index:50;}
-nav a{margin:0 10px;transition:.3s}
-nav a:hover{color:#22c55e}
-nav .btn{background:#facc15;color:#000;padding:12px 25px;border-radius:8px;font-weight:600;transition:.3s}
-nav .btn:hover{transform:scale(1.1)}
-.hero{display:flex;align-items:center;justify-content:space-between;padding:100px 50px;position:relative}
-.hero-text h1{font-size:55px;line-height:1.2;}
-.hero-text span{color:#22c55e}
-.hero-text p{max-width:450px;margin:20px 0;color:#cbd5e1;}
-.hero-text .btn{display:inline-block}
-.hero-img{position:relative;width:380px;height:380px}
-.circle{width:100%;height:100%;border-radius:50%;background:linear-gradient(135deg,#22c55e,#0ea5e9);display:flex;align-items:center;justify-content:center;animation:rotate 8s linear infinite;box-shadow:0 0 20px #22c55e33;}
-.circle img{width:85%;border-radius:50%;animation:float 3s ease-in-out infinite;transition:.5s transform;}
-.circle:hover img{transform:scale(1.05) rotate(5deg);}
-.badge{position:absolute;background:#1e293b;padding:8px 12px;border-radius:20px;font-size:12px;animation:float 4s infinite;transition:.3s;cursor:pointer;}
-.badge:hover{transform:scale(1.2);color:#22c55e;}
-.badge1{top:10%;left:-20px}
-.badge2{top:10%;right:-20px}
-.badge3{bottom:10%;left:-20px}
-.badge4{bottom:10%;right:-20px}
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px}
-.card{background:#1e293b;padding:20px;border-radius:10px;transition:.5s;overflow:hidden;position:relative;cursor:pointer;}
-.card:hover{transform:translateY(-10px) scale(1.05);box-shadow:0 0 20px #22c55e77;}
-.card img{width:100%;border-radius:10px;transition:.5s;}
-.card:hover img{transform:scale(1.1);}
-.video-card video{width:100%;border-radius:10px;display:block;}
-.card-particles{position:absolute;top:0;left:0;width:100%;height:100%;pointer-events:none;overflow:hidden;border-radius:10px;}
-.particle{position:absolute;width:4px;height:4px;border-radius:50%;background:#22c55e;opacity:0;transition:opacity .3s;}
-.skill-bar{background:#1e293b;border-radius:8px;height:15px;margin-top:10px;overflow:hidden;}
-.skill-fill{background:#22c55e;width:0;height:100%;border-radius:8px;transition:width 2s;}
-.counter{color:#22c55e;font-size:2rem;font-weight:700;}
-footer{text-align:center;padding:20px;background:#020617;color:#94a3b8;position:relative;z-index:10}
-canvas{position:fixed;top:0;left:0;z-index:-1}
-.cursor{width:20px;height:20px;border:2px solid #22c55e;border-radius:50%;position:fixed;pointer-events:none;transform:translate(-50%, -50%);transition:transform .1s,background .2s;z-index:100;}
-.cursor.active{transform:translate(-50%, -50%) scale(2);background:#22c55e33;}
-@keyframes rotate{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}
-@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-15px)}}
-</style>
+    <style>
+        html { scroll-behavior: smooth; }
+        
+        /* Moving Dark Blue Background with Abstract Particles */
+        body { 
+            margin: 0;
+            color: #ffffff; 
+            body {
+            font-family: 'Inter', sans-serif;
+            letter-spacing: 0.3px;
+        } 
+            overflow-x: hidden;
+            background: radial-gradient(circle at center, #0a192f 0%, #020617 100%);
+            position: relative;
+        }
+
+        /* Moving Gradient Layer */
+        .bg-animate {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: linear-gradient(-45deg, #0a192f, #0f172a, #1e293b, #020617);
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
+            z-index: -2;
+        }
+
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* Subtle Abstract Shapes */
+        .abstract-shape {
+            position: absolute;
+            background: rgba(34, 197, 94, 0.05);
+            filter: blur(80px);
+            border-radius: 50%;
+            z-index: -1;
+            animation: float 20s infinite alternate;
+        }
+
+        @keyframes float {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(100px, 50px); }
+        }
+
+        /* Glass Morphism Project Cards */
+        .project-card {
+            position: relative;
+            border-radius: 25px;
+            overflow: hidden;
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.4);
+            transition: all 0.5s ease;
+        }
+
+        .project-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.85;
+            transition: all 0.5s ease;
+        }
+
+        .project-card:hover {
+            transform: translateY(-12px) scale(1.03);
+            border-color: rgba(34, 197, 94, 0.6);
+            box-shadow: 0 25px 60px rgba(34, 197, 94, 0.2);
+        }
+
+        .project-card:hover img {
+            opacity: 1;
+            transform: scale(1.08);
+        }
+
+        /* Fade In / Out Smoothness */
+        [data-aos] {
+            transition-property: opacity, transform;
+            transition-duration: 0.8s;
+        }
+
+        .glass-white {
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+            transition: all 0.4s ease;
+        }
+
+        .glass-white:hover {
+            background: rgba(255, 255, 255, 0.15);
+            transform: translateY(-5px);
+            border-color: rgba(34, 197, 94, 0.5);
+        }
+
+        .hero-img-container { position: relative; transform: translateY(-60px); }
+
+        .typewriter-cursor::after {
+            content: "|";
+            animation: blink 0.5s infinite;
+            color: #22c55e;
+            margin-left: 5px;
+        }
+
+        @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
+
+        .accent-green { color: #22c55e; }
+
+        .service-circle {
+            width: 160px; height: 160px;
+            display: flex; flex-direction: column; align-items: center; justify-content: center;
+            border-radius: 50%; border: 2px solid rgba(34, 197, 94, 0.3);
+            background: rgba(255, 255, 255, 0.03);
+            transition: all 0.4s ease;
+            text-align: center; padding: 10px;
+        }
+        .service-circle:hover {
+            border-color: #22c55e;
+            background: rgba(34, 197, 94, 0.1);
+            transform: scale(1.1);
+        }
+
+        /* SKILLS SECTION CARDS */
+        .skill-card {
+            transition: all 0.5s ease;
+            transform-style: preserve-3d;
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border: 1px solid rgba(255,255,255,0.15);
+            border-radius: 20px;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.4);
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .skill-card:hover {
+            transform: translateY(-10px) scale(1.05) rotateX(2deg) rotateY(2deg);
+            border-color: rgba(34, 197, 94, 0.6);
+            box-shadow: 0 25px 60px rgba(34, 197, 94, 0.2);
+        }
+
+        .skill-card img {
+            width: 80px;
+            height: 80px;
+            margin-bottom: 1rem;
+            transition: all 0.5s ease;
+        }
+
+        .skill-card:hover img {
+            transform: scale(1.1);
+        }
+    </style>
 </head>
 <body>
 
-<canvas id="bg"></canvas>
-<div class="cursor" id="cursor"></div>
+    <div class="bg-animate"></div>
+    <div class="abstract-shape w-96 h-96 top-10 left-10"></div>
+    <div class="abstract-shape w-80 h-80 bottom-20 right-10" style="animation-delay: -5s;"></div>
 
-<nav>
-<div><b>RAIHAN</b></div>
-<div>
-<a href="#services">Services</a>
-<a href="#portfolio">Portfolio</a>
-<a href="#skills">Skills</a>
-<a href="#counters">Achievements</a>
-<a href="#contact">Contact</a>
-</div>
-<a class="btn" href="#contact">Contact Me</a>
-</nav>
+    <!-- NAVIGATION -->
+    <nav class="fixed top-6 left-1/2 -translate-x-1/2 z-50 w-[90%] max-w-5xl">
+        <div class="glass-white rounded-full px-8 py-4 flex justify-between items-center">
+            <div class="text-xl font-bold tracking-tighter">RAIHAN<span class="accent-green">.</span></div>
+            <ul class="hidden md:flex gap-8 text-xs uppercase font-bold tracking-widest">
+                <li><a href="#home" class="hover:accent-green transition">Home</a></li>
+                <li><a href="#about" class="hover:accent-green transition">About Me</a></li>
+                <li><a href="#my services" class="hover:accent-green transition">Service</a></li>
+                <li><a href="#skills" class="hover:accent-green transition">Skills</a></li>
+                <li><a href="#projects" class="hover:accent-green transition">Projects</a></li>
+                <li><a href="#contact" class="hover:accent-green transition">Contact</a></li>
+            </ul>
+            <a href="#contact" class="text-xs font-bold accent-green border border-green-500/30 px-4 py-1 rounded-full hover:bg-green-500 hover:text-black transition">HIRE ME</a>
+        </div>
+    </nav>
 
-<div class="hero">
-<div class="hero-text">
-<p>Introducing</p>
-<h1>Hello I'm <br><span>Raihan Sherzad</span></h1>
-<p>Graphic Designer & Video Editor creating modern, dynamic visuals.</p>
-<a href="#contact" class="btn">Contact Me</a>
-</div>
+    <!-- HOME SECTION -->
+    <section id="home" class="max-w-7xl mx-auto px-10 pt-60 pb-20 flex flex-col md:flex-row items-center">
+        <div class="md:w-1/2" data-aos="fade-right">
+            <p class="accent-green text-xl font-bold mb-5 tracking-wide">Hello, I am</p>
+            <h1 class="text-7xl font-black mb-6 leading-tight min-h-[160px]">
+                <span id="typewriter" class="typewriter-cursor"></span>
+            </h1>
+            <p class="text-gray-300 text-lg mb-10 max-w-sm">Creative designer focused on crafting premium visual identities and cinematic content. Delivering high-quality design solutions that combine creativity, strategy, and precision.</p>
+            <a href="https://wa.me/+93787076922" target="_blank" class="glass-white inline-block px-10 py-4 rounded-xl font-bold uppercase tracking-widest text-white">Contact Me</a>
+        </div>
+        <div class="md:w-1/2 mt-20 md:mt-0 hero-img-container" data-aos="zoom-in-up">
+            <div class="absolute inset-0 bg-blue-500/10 blur-[120px] rounded-full"></div>
+            <img src="Project.1.png" alt="Raihan Sherzad" class="rounded-3xl grayscale shadow-2xl relative z-10 border border-white/10">
+        </div>
+    </section>
 
-<div class="hero-img">
-<div class="circle">
-<img src="https://via.placeholder.com/300">
-</div>
-<div class="badge badge1">Ps</div>
-<div class="badge badge2">Ai</div>
-<div class="badge badge3">Id</div>
-<div class="badge badge4">Xd</div>
-</div>
-</div>
+    <!-- My Services? -->
+    <section id="my services" class="max-w-7xl mx-auto px-10 py-24">
+        <div class="text-center mb-16" data-aos="fade-up">
+            <h2 class="text-4xl font-bold mb-2">My Services?</h2>
+            <p class="accent-green tracking-widest text-sm font-bold uppercase">My Expert Skills</p>
+        </div>
+        <div class="flex flex-col lg:flex-row justify-center items-center gap-12 lg:gap-24">
+            <div class="grid grid-cols-1 gap-10" data-aos="fade-right">
+                <div class="service-circle"><i class="fas fa-film accent-green mb-2 text-xl"></i><span class="text-xs font-bold uppercase">Motion Designing</span></div>
+                <div class="service-circle"><i class="fas fa-video accent-green mb-2 text-xl"></i><span class="text-xs font-bold uppercase">Video Editing</span></div>
+                <div class="service-circle"><i class="fas fa-bezier-curve accent-green mb-2 text-xl"></i><span class="text-xs font-bold uppercase">Logo Design</span></div>
+            </div>
+            <div class="hidden lg:block w-px h-80 bg-gradient-to-b from-transparent via-green-500/50 to-transparent"></div>
+            <div class="grid grid-cols-1 gap-10" data-aos="fade-left">
+                <div class="service-circle"><i class="fas fa-pen-nib accent-green mb-2 text-xl"></i><span class="text-xs font-bold uppercase">Graphic Design</span></div>
+                <div class="service-circle"><i class="fas fa-share-alt accent-green mb-2 text-xl"></i><span class="text-xs font-bold uppercase">Branding</span></div>
+                <div class="service-circle"><i class="fas fa-palette accent-green mb-2 text-xl"></i><span class="text-xs font-bold uppercase">Social Media Designing</span></div>
+            </div>
+        </div>
+    </section>
 
-<section id="services">
-<h2>My Services</h2>
-<div class="grid">
-<div class="card">Logo Design</div>
-<div class="card">Social Media Design</div>
-<div class="card">Video Editing</div>
-</div>
-</section>
+    <!-- About Me -->
+    <section id="about me" class="max-w-7xl mx-auto px-10 py-24 flex flex-col md:flex-row gap-20">
+        <div class="md:w-1/2" data-aos="fade-right">
+            <img src="Project.1.png" class="rounded-2xl border-l-8 border-green-500">
+        </div>
+        <div class="md:w-1/2" data-aos="fade-left">
+            <h2 class="text-4xl font-bold mb-4">About Me</h2>
+            <div class="w-20 h-1 bg-green-500 mb-8"></div>
+            <p class="text-gray-300 mb-10">I am a skilled graphic and video editor, experienced in CorelDRAW, Illustrator, After Effects, and Premiere Pro. I use CorelDRAW and Illustrator to create logos, illustrations, and professional designs with attention to detail. With After Effects and Premiere Pro, I make animated graphics and edit videos to produce high-quality and engaging content.</p>
+            <div class="space-y-6">
+                <div>
+                    <div class="flex justify-between mb-2"><span class="text-xs font-bold uppercase">Clints</span><span class="text-xs">100+</span></div>
+                    <div class="w-full bg-white/15 h-1 rounded-full"><div class="bg-green-500 h-1" style="width: 100+"></div></div>
+                </div>
+                <div>
+                    <div class="flex justify-between mb-2"><span class="text-xs font-bold uppercase">Projects</span><span class="text-xs">500+</span></div>
+                    <div class="w-full bg-white/15 h-1 rounded-full"><div class="bg-green-500 h-1" style="width: 92%"></div></div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-<section id="portfolio">
-<h2>Portfolio</h2>
-<div class="grid">
-<div class="card video-card">
-<video src="https://www.w3schools.com/html/mov_bbb.mp4" muted loop preload="metadata"></video>
-<img src="https://via.placeholder.com/300" class="thumb">
-</div>
-<div class="card"><img src="https://via.placeholder.com/300"></div>
-<div class="card video-card">
-<video src="https://www.w3schools.com/html/movie.mp4" muted loop preload="metadata"></video>
-<img src="https://via.placeholder.com/300" class="thumb">
-</div>
-</div>
-</section>
+    <!-- skills -->
+    <section id="skills" class="max-w-7xl mx-auto px-10 py-24">
+        <div class="text-center mb-16" data-aos="fade-up">
+            <h2 class="text-4xl font-bold mb-2">My Skills</h2>
+            <p class="accent-green tracking-widest text-sm font-bold uppercase">Professional Tools  I  Use</p>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
 
-<section id="skills">
-<h2>My Skills</h2>
-<div class="grid">
-<div class="card">
-<h3>Photoshop</h3>
-<div class="skill-bar"><div class="skill-fill" data-percent="90%"></div></div>
-</div>
-<div class="card">
-<h3>Illustrator</h3>
-<div class="skill-bar"><div class="skill-fill" data-percent="85%"></div></div>
-</div>
-<div class="card">
-<h3>Video Editing</h3>
-<div class="skill-bar"><div class="skill-fill" data-percent="95%"></div></div>
-</div>
-</div>
-</section>
+            <!-- CorelDRAW -->
+            <div class="skill-card" data-aos="fade-up">
+                <img src="coreldraw.png" alt="CorelDRAW Logo">
+                <h3 class="text-xl font-bold mb-2">CorelDRAW</h3>
+                <p class="text-gray-300 text-sm">I create professional vector graphics, logos, and print-ready designs using CorelDRAW.</p>
+            </div>
 
-<section id="counters">
-<h2>Achievements</h2>
-<div class="grid">
-<div class="card"><h3><span class="counter" data-target="150">0</span>+</h3>Projects Completed</div>
-<div class="card"><h3><span class="counter" data-target="100">0</span>+</h3>Happy Clients</div>
-<div class="card"><h3><span class="counter" data-target="200">0</span>+</h3>Videos Edited</div>
-</div>
-</section>
+            <!-- Illustrator -->
+            <div class="skill-card" data-aos="fade-up" data-aos-delay="100">
+                <img src="illustrator.png" alt="Illustrator Logo">
+                <h3 class="text-xl font-bold mb-2">Adobe Illustrator</h3>
+                <p class="text-gray-300 text-sm">I design high-quality illustrations, icons, and branding assets with Adobe Illustrator.</p>
+            </div>
 
-<section id="contact">
-<h2>Contact Me</h2>
-<div class="grid">
-<div class="card">Email: example@email.com</div>
-<div class="card">Phone: +93 700 000 000</div>
-<div class="card">Social: @raihansherzad</div>
-</div>
-</section>
+            <!-- After Effects -->
+            <div class="skill-card" data-aos="fade-up" data-aos-delay="200">
+                <img src="aftereffects.png" alt="After Effects Logo">
+                <h3 class="text-xl font-bold mb-2">Adobe After Effects</h3>
+                <p class="text-gray-300 text-sm">I bring designs to life with motion graphics, animated titles, and visual effects using After Effects.</p>
+            </div>
 
-<footer>
-© 2026 Raihan Sherzad | God Mode Portfolio
-</footer>
+            <!-- Premiere Pro -->
+            <div class="skill-card" data-aos="fade-up" data-aos-delay="300">
+                <img src="premiere.png" alt="Premiere Pro Logo">
+                <h3 class="text-xl font-bold mb-2">Adobe Premiere Pro</h3>
+                <p class="text-gray-300 text-sm">I produce polished videos with seamless editing, color correction, and dynamic storytelling in Premiere Pro.</p>
+            </div>
 
-<script>
-// ---------- Scroll Animation ----------
-window.addEventListener('scroll',()=>{
-document.querySelectorAll('section').forEach((s,i)=>{
-if(s.getBoundingClientRect().top<window.innerHeight-100){setTimeout(()=>s.classList.add('show'),i*200)}})});
+        </div>
+    </section>
 
-// ---------- Particles ----------
-const c=document.getElementById('bg'),ctx=c.getContext('2d');c.width=innerWidth;c.height=innerHeight;
-let p=[];for(let i=0;i<120;i++){p.push({x:Math.random()*c.width,y:Math.random()*c.height,r:Math.random()*2+1,dx:(Math.random()-0.5)*0.5,dy:(Math.random()-0.5)*0.5})}
-function draw(){ctx.clearRect(0,0,c.width,c.height);p.forEach(a=>{a.x+=a.dx;a.y+=a.dy;if(a.x>c.width)a.x=0;if(a.x<0)a.x=c.width;if(a.y>c.height)a.y=0;if(a.y<0)a.y=c.height;ctx.beginPath();ctx.arc(a.x,a.y,a.r,0,Math.PI*2);ctx.fillStyle='#22c55e';ctx.fill()});requestAnimationFrame(draw)}
-draw();
+    <!-- projects -->
+    <section id="projects" class="max-w-7xl mx-auto px-10 py-24 text-center">
+        <h2 class="text-4xl font-bold mb-2">My Recent Projects</h2>
+        <p class="accent-green mb-16 tracking-[.5em] text-sm font-bold uppercase">500+ Success full projects</p>
 
-// ---------- Custom Cursor ----------
-const cursor=document.getElementById('cursor');
-document.addEventListener('mousemove',e=>{cursor.style.left=e.clientX+'px';cursor.style.top=e.clientY+'px';})
-document.querySelectorAll('a,.card,.badge').forEach(el=>{el.addEventListener('mouseenter',()=>cursor.classList.add('active'));el.addEventListener('mouseleave',()=>cursor.classList.remove('active'));});
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
 
-// ---------- Video Hover ----------
-document.querySelectorAll('.video-card').forEach(card=>{
-const video = card.querySelector('video');
-card.addEventListener('mouseenter',()=>{video.play();});
-card.addEventListener('mouseleave',()=>{video.pause(); video.currentTime=0;});
-});
+            <div class="project-card" data-aos="fade-up">
+                <img src="project.1.jpg" alt="project">
+            </div>
+            <div class="project-card" data-aos="fade-up" data-aos-delay="100">
+                <img src="project.2.jpg" alt="project">
+            </div>
+            <div class="project-card" data-aos="fade-up" data-aos-delay="200">
+                <img src="project.3.jpg" alt="project">
+            </div>
+            <div class="project-card" data-aos="fade-up">
+                <img src="project.4.jpg" alt="project">
+            </div>
+            <div class="project-card" data-aos="fade-up" data-aos-delay="100">
+                <img src="project.5.jpg" alt="project">
+            </div>
+            <div class="project-card" data-aos="fade-up" data-aos-delay="200">
+                <img src="project.6.jpg" alt="project">
+            </div>
+            <div class="project-card" data-aos="fade-up">
+                <img src="project.7.jpg" alt="project">
+            </div>
+            <div class="project-card" data-aos="fade-up" data-aos-delay="100">
+                <img src="project.8.jpg" alt="project">
+            </div>
+            <div class="project-card" data-aos="fade-up" data-aos-delay="100">
+                <img src="project.9.jpg" alt="project">
+            </div>
+            <div class="project-card" data-aos="fade-up" data-aos-delay="200">
+                <img src="project.10.jpg" alt="project">
+            </div>
+            <div class="project-card" data-aos="fade-up">
+                <img src="project.11.jpg" alt="project">
+            </div>
+            <div class="project-card" data-aos="fade-up" data-aos-delay="100">
+                <img src="project.12.jpg" alt="project">
+            </div>
 
-// ---------- Animate Skills ----------
-function animateSkills(){
-  document.querySelectorAll('.skill-fill').forEach(fill=>{
-    fill.style.width = fill.dataset.percent;
-  });
-}
 
-// ---------- Animated Counters ----------
-function animateCounters(){
-  document.querySelectorAll('.counter').forEach(counter=>{
-    const target = +counter.dataset.target;
-    let count = 0;
-    const step = Math.ceil(target/100);
-    const interval = setInterval(()=>{
-      count += step;
-      if(count>=target){count=target;clearInterval(interval);}
-      counter.innerText = count;
-    },20);
-  });
-}
+        </div>
+    </section>
 
-// ---------- Card Hover Particles ----------
-document.querySelectorAll('.card').forEach(card=>{
-  const container = document.createElement('div');
-  container.classList.add('card-particles');
-  card.appendChild(container);
+    <!-- CONTACT SECTION -->
+    <section id="contact" class="max-w-4xl mx-auto px-10 py-24" data-aos="fade-up">
+        <div class="glass-white p-12 rounded-[2rem] text-center">
+            <h2 class="text-4xl font-bold mb-8">Start a Project</h2>
+            <form class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <input type="text" placeholder="Name" class="bg-black/20 p-4 rounded-xl border border-white/10 outline-none text-white">
+                <input type="email" placeholder="Email" class="bg-black/20 p-4 rounded-xl border border-white/10 outline-none text-white">
+                <textarea placeholder="Message" class="bg-black/20 p-4 rounded-xl md:col-span-2 h-32 border border-white/10 outline-none text-white"></textarea>
+                <div class="md:col-span-2">
+                    <a href="https://wa.me/+93787076922" target="_blank" class="glass-white w-full py-4 rounded-xl font-bold text-white block text-center">SEND MESSAGE</a>
+                </div>
+            </form>
+        </div>
+    </section>
 
-  card.addEventListener('mouseenter',()=>{
-    for(let i=0;i<20;i++){
-      const particle = document.createElement('div');
-      particle.classList.add('particle');
-      particle.style.left = Math.random()*100 + '%';
-      particle.style.top = Math.random()*100 + '%';
-      container.appendChild(particle);
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({ 
+            duration: 1000, 
+            once: false, 
+            mirror: true,
+            offset: 100 
+        });
 
-      const xMove = (Math.random()-0.5)*50;
-      const yMove = (Math.random()-0.5)*50;
-      particle.style.transition = 'transform 0.8s ease, opacity 0.8s ease';
-      particle.style.transform = `translate(${xMove}px, ${yMove}px)`;
-      particle.style.opacity = 1;
+        const text = "RAIHAN\nSHERZAD";
+        const typewriterElement = document.getElementById('typewriter');
+        let i = 0;
+        function typeWriter() {
+            if (i < text.length) {
+                if (text.charAt(i) === "\n") { typewriterElement.innerHTML += "<br>"; } 
+                else { typewriterElement.innerHTML += text.charAt(i); }
+                i++; setTimeout(typeWriter, 150);
+            }
+        }
+        window.onload = typeWriter;
+    </script>
 
-      setTimeout(()=>{particle.remove();},800);
-    }
-  });
-});
+ <footer class="text-center py-10 opacity-50 text-sm">
+        © 2026 RAIHAN SHERZAD | Graphic Designer and Video Editor 
+    </footer>
 
-// ---------- Trigger animations on load ----------
-window.addEventListener('load', ()=>{
-  animateSkills();
-  animateCounters();
-  document.querySelectorAll('section').forEach(s=>s.classList.add('show'));
-});
-</script>
-
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            duration: 800,
+            once: false, // Set to false so it re-animates on every scroll!
+            mirror: true, // Animates out as you scroll past
+            offset: 200
+        });
+    </script>
 </body>
 </html>
